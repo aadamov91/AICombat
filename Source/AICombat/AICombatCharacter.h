@@ -20,10 +20,11 @@ class AAICombatCharacter : public AALSCharacter
 	GENERATED_BODY()
 public:
 	AAICombatCharacter(const FObjectInitializer& ObjectInitializer);
+
+	virtual void BeginPlay() override;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UAttrubiteComponent* AttributeComp;
-
-
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	FVector MuzzleOffset;

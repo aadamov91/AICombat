@@ -29,15 +29,19 @@ AAICombatCharacter::AAICombatCharacter(const FObjectInitializer& ObjectInitializ
 	}
 }
 
-void AAICombatCharacter::PostInitializeComponents()
+void AAICombatCharacter::BeginPlay()
 {
-	Super::PostInitializeComponents();
-	AttributeComp->OnHealthChanged.AddDynamic(this, &AAICombatCharacter::OnHealthChanged);
-
+	Super::BeginPlay();
 	if (auto* HPWidget = Cast<UHealthbarWidget>(Widgets->GetUserWidgetObject()))
 	{
 		HPWidget->SetHPFraction(1.f);
 	}
+}
+
+void AAICombatCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	AttributeComp->OnHealthChanged.AddDynamic(this, &AAICombatCharacter::OnHealthChanged);
 }
 
 void AAICombatCharacter::Fire()

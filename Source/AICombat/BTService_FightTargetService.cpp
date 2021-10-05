@@ -21,6 +21,8 @@ void UBTService_FightTargetService::TickNode(UBehaviorTreeComponent& OwnerComp, 
 				LastKnownPosition = target->GetActorLocation();
 				TargetWasAcquired = true;
 				OwnerComp.GetBlackboardComponent()->SetValueAsBool(HasValidTargetKey.SelectedKeyName, true);
+				OwnerComp.GetBlackboardComponent()->SetValueAsBool(TargetLostKey.SelectedKeyName, false);
+
 			}
 			else
 			{
